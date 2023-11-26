@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+	th:replace="~{ base :: layout(~{::title} , ~{::section} ) }">
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+</head>
+<body>
+	<section>
+		<div class="container mt-2 ">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card">
+						<div class="card-header text-center">
+							<h3>Register Page</h3>
+							<th:block th:if="${session.msg}">
+								<p class="fs-5 text-center text-success">[[${session.msg}]]</p>
+								<th:block th:text="${@userServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+						</div>
+						<div class="card-body ">
+							<form action="saveUser" method="post">
+								<div class="mb-3">
+									<label>Enter Full Name</label> <input type="text" name=name
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Enter Qualification</label> <input type="text"
+										name="qualification" class="form-control">
+								</div>
+								<div class="mb-3">
+									<label>Enter Email</label> <input type="email" name="email"
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Enter Address</label> <input type="text" name="address"
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Gender</label>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="gender"
+											id="inlineRadio1" value="Male"> <label
+											class="form-check-label" for="inlineRadio1">Male</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="gender"
+											id="inlineRadio2" value="Female"> <label
+											class="form-check-label" for="inlineRadio2">Female</label>
+									</div>
+
+								</div>
+								<div class="mb-3">
+									<label>Enter Password</label> <input type="password"
+										name="password" class="form-control">
+								</div>
+
+								<button class="btn btn-primary col-md-12">Register</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
